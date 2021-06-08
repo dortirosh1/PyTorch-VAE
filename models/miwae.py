@@ -1,5 +1,5 @@
 import torch
-from models import BaseVAE
+from PyTorch_VAE.models import BaseVAE
 from torch import nn
 from torch.nn import functional as F
 from .types_ import *
@@ -103,9 +103,9 @@ class MIWAE(BaseVAE):
         :return: (Tensor) [B x S x C x H x W]
         """
         B, M,S, D = z.size()
-        z = z.view(-1, self.latent_dim) #[BMS x D]
+        z = z.reshape(-1, self.latent_dim) #[BMS x D]
         result = self.decoder_input(z)
-        result = result.view(-1, 512, 2, 2)
+        result = result.reshape(-1, 512, 2, 2)
         result = self.decoder(result)
         result = self.final_layer(result) #[BMS x C x H x W ]
         result = result.view([B, M, S,result.size(-3), result.size(-2), result.size(-1)]) #[B x M x S x C x H x W]

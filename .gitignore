@@ -2,6 +2,8 @@
 data/
 logs/
 
+PyTorch-VAE/
+
 VanillaVAE/version_0/
 
 __pycache__/

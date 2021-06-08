@@ -1,5 +1,5 @@
 import torch
-from models import BaseVAE
+from PyTorch_VAE.models import BaseVAE
 from torch import nn
 from torchvision.models import vgg19_bn
 from torch.nn import functional as F
